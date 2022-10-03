@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "author": "emp1tsu",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.66",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.66",
     "@electron-forge/maker-zip": "^6.0.0-beta.66",
+    "@electron-forge/publisher-github": "^6.0.0-beta.66",
     "electron": "^20.1.1"
   },
   "dependencies": {
@@ -46,12 +48,18 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
-        },
+        }
+      ],
+      "publishers": [
         {
-          "name": "@electron-forge/maker-squirrel",
+          "name": "@electron-forge/publisher-github",
           "config": {
-            "certificateFile": "./cert.pfx",
-            "certificatePassword": "this-is-a-secret"
+            "repository": {
+              "owner": "emp1tsu",
+              "name": "electron-tutorial"
+            },
+            "prerelease": false,
+            "draft": true
           }
         }
       ]
